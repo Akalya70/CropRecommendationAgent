@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Recommendation Agent - Smart Farming</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Header Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="navbar-logo">🌱 <span>CropAgent</span></a>
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <ul class="navbar-links" id="navLinks">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li class="auth-only" style="display: none;"><a href="dashboard.html">Dashboard</a></li>
+            <li class="auth-only" style="display: none;"><a href="land-analysis.html">Land Analysis</a></li>
+            <li class="auth-only" style="display: none;"><a href="leaf-analysis.html">Leaf Analysis</a></li>
+            <li class="auth-only" style="display: none;"><a href="history.html">History</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li class="auth-only" style="display: none;"><a href="profile.html">Profile</a></li>
+            <li class="admin-only" style="display: none;"><a href="admin.html">Admin Panel</a></li>
+        </ul>
+        <div class="navbar-actions">
+            <button class="btn-icon" id="darkModeToggle" title="Toggle Theme">🌙</button>
+            <span class="auth-only" id="userNameDisplay" style="display: none; font-weight: 600; color: var(--text-primary); margin-right: 0.5rem;"></span>
+            <a href="login.html" class="btn btn-secondary guest-only">Login</a>
+            <a href="register.html" class="btn btn-primary guest-only">Register</a>
+            <a href="#" class="btn btn-danger auth-only" id="logoutBtn" style="display: none;">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <h1 class="hero-title">AI-Powered Crop Recommendation Agent</h1>
+        <p class="hero-subtitle">Helping Farmers Make Better Agricultural Decisions with Google Gemini Intelligence.</p>
+        <div class="hero-buttons">
+            <a href="register.html" class="btn btn-primary guest-only">Get Started</a>
+            <a href="dashboard.html" class="btn btn-primary auth-only" style="display: none;">Go to Dashboard</a>
+        </div>
+    </header>
+
+    <!-- Main Content Cards -->
+    <main class="container">
+        <h2 style="text-align: center; margin-bottom: 1rem; color: var(--color-primary);">Smart Agricultural Modules</h2>
+        <p style="text-align: center; color: var(--text-secondary); max-width: 600px; margin: 0 auto 3rem auto;">
+            Our agent analyzes soil characteristics and environmental factors or identifies crop leaf diseases to optimize yield and treatment recommendations.
+        </p>
+
+        <section class="cards-grid">
+            <!-- Card 1: Land Analysis -->
+            <div class="card">
+                <div class="card-icon">🌱</div>
+                <h3 class="card-title">Land Condition Analysis</h3>
+                <p class="card-desc">
+                    Recommend the best crop before cultivation based on Nitrogen, Phosphorus, Potassium levels, temperature, humidity, rainfall, and local soil pH conditions.
+                </p>
+                <a href="land-analysis.html" class="btn btn-primary" style="margin-top: 1rem;">Analyze Land</a>
+            </div>
+
+            <!-- Card 2: Leaf Analysis -->
+            <div class="card">
+                <div class="card-icon">🍃</div>
+                <h3 class="card-title">Leaf Condition Analysis</h3>
+                <p class="card-desc">
+                    Identify plant diseases, nutrient deficiencies, or physiological stresses using visual images or symptom parameters to determine treatments and organic fertilizers.
+                </p>
+                <a href="leaf-analysis.html" class="btn btn-primary" style="margin-top: 1rem;">Analyze Leaf</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+        <p>&copy; 2026 Crop Recommendation Agent. All rights reserved. Powered by Google Gemini API.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check auth nav display on page load
+            checkAuthNavOnly();
+        });
+    </script>
+</body>
+</html>

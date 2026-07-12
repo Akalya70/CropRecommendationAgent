@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Crop Recommendation Agent</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Header Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="navbar-logo">🌱 <span>CropAgent</span></a>
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <ul class="navbar-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="dashboard.html" class="active">Dashboard</a></li>
+            <li><a href="land-analysis.html">Land Analysis</a></li>
+            <li><a href="leaf-analysis.html">Leaf Analysis</a></li>
+            <li><a href="history.html">History</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li class="admin-only" style="display: none;"><a href="admin.html">Admin Panel</a></li>
+        </ul>
+        <div class="navbar-actions">
+            <button class="btn-icon" id="darkModeToggle" title="Toggle Theme">🌙</button>
+            <span id="userNameDisplay" style="font-weight: 600; color: var(--text-primary); margin-right: 0.5rem;"></span>
+            <a href="#" class="btn btn-danger" id="logoutBtn">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Dashboard Content -->
+    <main class="container">
+        <header style="margin-bottom: 2.5rem; text-align: left;">
+            <h1 style="font-size: 2.2rem; color: var(--color-primary);" id="welcomeTitle">Welcome back, Farmer!</h1>
+            <p style="color: var(--text-secondary);">What farming activity would you like to perform today?</p>
+        </header>
+
+        <section class="cards-grid">
+            <!-- Card 1: Analyze Land -->
+            <div class="card">
+                <div class="card-icon">🌱</div>
+                <h3 class="card-title">Land Condition Analysis</h3>
+                <p class="card-desc">
+                    Examine soil chemistry (Nitrogen, Phosphorus, Potassium) and local weather metrics before planting. Get optimal crop suggestions powered by Google Gemini AI.
+                </p>
+                <a href="land-analysis.html" class="btn btn-primary" style="margin-top: 1rem; width: 100%;">Analyze Land</a>
+            </div>
+
+            <!-- Card 2: Analyze Leaf -->
+            <div class="card">
+                <div class="card-icon">🍃</div>
+                <h3 class="card-title">Leaf Condition Analysis</h3>
+                <p class="card-desc">
+                    Diagnose crop foliage conditions after planting. Detect pests, diseases, or deficiencies through symptom profiles or visual photo uploads, and receive targeted fertilizer schedules.
+                </p>
+                <a href="leaf-analysis.html" class="btn btn-primary" style="margin-top: 1rem; width: 100%;">Analyze Leaf</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+        <p>&copy; 2026 Crop Recommendation Agent. All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const user = await checkAuthentication();
+            if (user) {
+                document.getElementById('welcomeTitle').textContent = `Welcome back, ${user.fullName}!`;
+            }
+        });
+    </script>
+</body>
+</html>

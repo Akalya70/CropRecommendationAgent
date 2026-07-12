@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Crop Recommendation Agent</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Header Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="navbar-logo">🌱 <span>CropAgent</span></a>
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <ul class="navbar-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="land-analysis.html">Land Analysis</a></li>
+            <li><a href="leaf-analysis.html">Leaf Analysis</a></li>
+            <li><a href="history.html">History</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li class="admin-only" style="display: none;"><a href="admin.html" class="active">Admin Panel</a></li>
+        </ul>
+        <div class="navbar-actions">
+            <button class="btn-icon" id="darkModeToggle" title="Toggle Theme">🌙</button>
+            <span id="userNameDisplay" style="font-weight: 600; color: var(--text-primary); margin-right: 0.5rem;"></span>
+            <a href="#" class="btn btn-danger" id="logoutBtn">Logout</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <header style="margin-bottom: 1.5rem; text-align: left;">
+            <h1 style="font-size: 2.2rem; color: var(--color-primary);">Admin Panel</h1>
+            <p style="color: var(--text-secondary);">Manage users, analysis records, and feedback submissions.</p>
+        </header>
+
+        <div class="tabs-header">
+            <button class="tab-btn active" data-tab="usersTab">👤 Users</button>
+            <button class="tab-btn" data-tab="landTab">🌱 Land History</button>
+            <button class="tab-btn" data-tab="leafTab">🍃 Leaf History</button>
+            <button class="tab-btn" data-tab="feedbackTab">💬 Feedback</button>
+        </div>
+
+        <!-- Users Tab -->
+        <div class="tab-content active" id="usersTab">
+            <div class="table-container">
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Full Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Role</th>
+                            <th>Joined</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Land Tab -->
+        <div class="tab-content" id="landTab">
+            <div class="table-container">
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>User</th>
+                            <th>Crop</th>
+                            <th>Location</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="landTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Leaf Tab -->
+        <div class="tab-content" id="leafTab">
+            <div class="table-container">
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>User</th>
+                            <th>Type</th>
+                            <th>Disease</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leafTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Feedback Tab -->
+        <div class="tab-content" id="feedbackTab">
+            <div class="table-container">
+                <table class="custom-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Message</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="feedbackTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+        <p>&copy; 2026 Crop Recommendation Agent. All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

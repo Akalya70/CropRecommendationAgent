@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Land Analysis - Crop Recommendation Agent</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Header Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="navbar-logo">🌱 <span>CropAgent</span></a>
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <ul class="navbar-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="land-analysis.html" class="active">Land Analysis</a></li>
+            <li><a href="leaf-analysis.html">Leaf Analysis</a></li>
+            <li><a href="history.html">History</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li class="admin-only" style="display: none;"><a href="admin.html">Admin Panel</a></li>
+        </ul>
+        <div class="navbar-actions">
+            <button class="btn-icon" id="darkModeToggle" title="Toggle Theme">🌙</button>
+            <span id="userNameDisplay" style="font-weight: 600; color: var(--text-primary); margin-right: 0.5rem;"></span>
+            <a href="#" class="btn btn-danger" id="logoutBtn">Logout</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <header style="margin-bottom: 2rem; text-align: left;">
+            <h1 style="font-size: 2.2rem; color: var(--color-primary);">Land Condition Analysis</h1>
+            <p style="color: var(--text-secondary);">Enter your soil and environmental data to get an AI-powered crop recommendation.</p>
+        </header>
+
+        <div id="errorAlert" class="alert alert-danger" style="display: none;"></div>
+
+        <form id="landForm">
+            <div class="analysis-grid">
+                <div class="form-group">
+                    <label for="nitrogen" class="form-label">Nitrogen (N) - mg/kg</label>
+                    <input type="number" step="any" min="0" id="nitrogen" class="form-input" placeholder="e.g., 90" required>
+                    <span id="nitrogenError" class="form-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="phosphorus" class="form-label">Phosphorus (P) - mg/kg</label>
+                    <input type="number" step="any" min="0" id="phosphorus" class="form-input" placeholder="e.g., 42" required>
+                    <span id="phosphorusError" class="form-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="potassium" class="form-label">Potassium (K) - mg/kg</label>
+                    <input type="number" step="any" min="0" id="potassium" class="form-input" placeholder="e.g., 43" required>
+                    <span id="potassiumError" class="form-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="temperature" class="form-label">Temperature (°C)</label>
+                    <input type="number" step="any" id="temperature" class="form-input" placeholder="e.g., 26.5" required>
+                    <span id="temperatureError" class="form-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="humidity" class="form-label">Humidity (%)</label>
+                    <input type="number" step="any" min="0" max="100" id="humidity" class="form-input" placeholder="e.g., 80" required>
+                    <span id="humidityError" class="form-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="ph" class="form-label">Soil pH</label>
+                    <input type="number" step="any" min="0" max="14" id="ph" class="form-input" placeholder="e.g., 6.5" required>
+                    <span id="phError" class="form-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="rainfall" class="form-label">Rainfall (mm)</label>
+                    <input type="number" step="any" min="0" id="rainfall" class="form-input" placeholder="e.g., 200" required>
+                    <span id="rainfallError" class="form-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="state" class="form-label">State</label>
+                    <input type="text" id="state" class="form-input" placeholder="e.g., Tamil Nadu" required>
+                    <span id="stateError" class="form-error"></span>
+                </div>
+                <div class="form-group">
+                    <label for="district" class="form-label">District</label>
+                    <input type="text" id="district" class="form-input" placeholder="e.g., Karur" required>
+                    <span id="districtError" class="form-error"></span>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="padding: 0.8rem 2rem;">Analyze Land</button>
+        </form>
+
+        <!-- Result Section -->
+        <section class="result-section" id="resultSection">
+            <div class="result-header">
+                <h2 style="color: var(--color-primary);">Recommendation Result</h2>
+                <div class="action-buttons">
+                    <button class="btn btn-secondary" id="downloadBtn">⬇ Download PDF</button>
+                    <button class="btn btn-secondary" id="emailBtn">✉ Email Report</button>
+                </div>
+            </div>
+
+            <div class="result-grid">
+                <div class="result-card" style="grid-column: 1 / -1;">
+                    <div class="result-card-title">🌾 Recommended Crop</div>
+                    <p id="resCropName" style="font-size: 1.3rem; font-weight: 700; color: var(--color-primary);"></p>
+                    <p id="resReason" style="margin-top: 0.5rem;"></p>
+                </div>
+                <div class="result-card">
+                    <div class="result-card-title">Suitable Season</div>
+                    <p id="resSeason"></p>
+                </div>
+                <div class="result-card">
+                    <div class="result-card-title">Water Requirement</div>
+                    <p id="resWater"></p>
+                </div>
+                <div class="result-card">
+                    <div class="result-card-title">Expected Yield</div>
+                    <p id="resYield"></p>
+                </div>
+                <div class="result-card" style="grid-column: 1 / -1;">
+                    <div class="result-card-title">Cultivation Tips</div>
+                    <p id="resTips" style="white-space: pre-line;"></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+        <p>&copy; 2026 Crop Recommendation Agent. All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/land.js"></script>
+</body>
+</html>

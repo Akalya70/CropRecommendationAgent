@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Crop Recommendation Agent</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Header Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="navbar-logo">🌱 <span>CropAgent</span></a>
+        <button class="menu-toggle" id="menuToggle">☰</button>
+        <ul class="navbar-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="land-analysis.html">Land Analysis</a></li>
+            <li><a href="leaf-analysis.html">Leaf Analysis</a></li>
+            <li><a href="history.html">History</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="profile.html" class="active">Profile</a></li>
+            <li class="admin-only" style="display: none;"><a href="admin.html">Admin Panel</a></li>
+        </ul>
+        <div class="navbar-actions">
+            <button class="btn-icon" id="darkModeToggle" title="Toggle Theme">🌙</button>
+            <span id="userNameDisplay" style="font-weight: 600; color: var(--text-primary); margin-right: 0.5rem;"></span>
+            <a href="#" class="btn btn-danger" id="logoutBtn">Logout</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <header style="margin-bottom: 1.5rem; text-align: left;">
+            <h1 style="font-size: 2.2rem; color: var(--color-primary);">My Profile</h1>
+            <p style="color: var(--text-secondary);">Update your personal details or change your password.</p>
+        </header>
+
+        <div class="profile-layout">
+            <!-- Profile Info Form -->
+            <div class="form-container" style="margin: 0;">
+                <h2 class="form-title">Personal Information</h2>
+
+                <form id="profileForm">
+                    <div class="form-group">
+                        <label for="fullName" class="form-label">Full Name</label>
+                        <input type="text" id="fullName" class="form-input" required minlength="2">
+                        <span id="fullNameError" class="form-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" id="email" class="form-input" required>
+                        <span id="emailError" class="form-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phoneNumber" class="form-label">Phone Number</label>
+                        <input type="tel" id="phoneNumber" class="form-input" required pattern="[0-9]{10,15}">
+                        <span id="phoneNumberError" class="form-error"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary form-submit-btn">Save Changes</button>
+                </form>
+            </div>
+
+            <!-- Password Change Form -->
+            <div class="form-container" style="margin: 0;">
+                <h2 class="form-title">Change Password</h2>
+
+                <form id="passwordChangeForm">
+                    <div class="form-group">
+                        <label for="oldPassword" class="form-label">Current Password</label>
+                        <input type="password" id="oldPassword" class="form-input" required>
+                        <span id="oldPasswordError" class="form-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="newPassword" class="form-label">New Password</label>
+                        <input type="password" id="newPassword" class="form-input" required minlength="6">
+                        <span id="newPasswordError" class="form-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmPassword" class="form-label">Confirm New Password</label>
+                        <input type="password" id="confirmPassword" class="form-input" required>
+                        <span id="confirmPasswordError" class="form-error"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary form-submit-btn">Update Password</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+        <p>&copy; 2026 Crop Recommendation Agent. All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>
