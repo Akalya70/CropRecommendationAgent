@@ -4,6 +4,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+import jakarta.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -28,35 +30,44 @@ public class GeminiService {
         this.restTemplate = restTemplate;
     }
 
-    // Groq endpoint
+    @PostConstruct
+    public void init() {
+        if (apiKey == null || apiKey.isBlank()) {
+            System.out.println("ERROR: GROQ API KEY NOT FOUND!");
+        } else {
+            System.out.println("Groq API Key Loaded Successfully");
+            System.out.println("Key starts with: " + apiKey.substring(0, Math.min(10, apiKey.length())));
+        }
+    }
+
     private static final String URL =
             "https://api.groq.com/openai/v1/chat/completions";
 
-    // Text-only Groq model
-    private static final String MODEL = "llama-3.3-70b-versatile";
+    private static final String MODEL =
+            "llama-3.3-70b-versatile";
 
-    // Groq vision-capable model (supports image + text input)
-    private static final String VISION_MODEL = "meta-llama/llama-4-scout-17b-16e-instruct";
+    private static final String VISION_MODEL =
+            "meta-llama/llama-4-scout-17b-16e-instruct";
 
     public String generateText(String prompt) {
 
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.setBearerAuth(apiKey);
+
+        Map<String, Object> message = new HashMap<>();
+        message.put("role", "user");
+        message.put("content", prompt);
+
+        Map<String, Object> request = new HashMap<>();
+        request.put("model", MODEL);
+        request.put("messages", Collections.singletonList(message));
+        request.put("temperature", 0.2);
+
+        HttpEntity<Map<String, Object>> entity =
+                new HttpEntity<>(request, headers);
+
         try {
-
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_JSON);
-            headers.setBearerAuth(apiKey);
-
-            Map<String, Object> message = new HashMap<>();
-            message.put("role", "user");
-            message.put("content", prompt);
-
-            Map<String, Object> request = new HashMap<>();
-            request.put("model", MODEL);
-            request.put("messages", Collections.singletonList(message));
-            request.put("temperature", 0.2);
-
-            HttpEntity<Map<String, Object>> entity =
-                    new HttpEntity<>(request, headers);
 
             ResponseEntity<String> response =
                     restTemplate.postForEntity(URL, entity, String.class);
@@ -64,6 +75,9 @@ public class GeminiService {
             return extractContent(response.getBody());
 
         } catch (Exception e) {
+
+            System.out.println("Groq API Error: " + e.getMessage());
+
             throw new RuntimeException(
                     "Failed to call Groq API: " + e.getMessage(), e);
         }
@@ -73,34 +87,34 @@ public class GeminiService {
                                      String mimeType,
                                      String base64Image) {
 
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.setBearerAuth(apiKey);
+
+        Map<String, Object> textPart = new HashMap<>();
+        textPart.put("type", "text");
+        textPart.put("text", prompt);
+
+        Map<String, Object> imageUrl = new HashMap<>();
+        imageUrl.put("url", "data:" + mimeType + ";base64," + base64Image);
+
+        Map<String, Object> imagePart = new HashMap<>();
+        imagePart.put("type", "image_url");
+        imagePart.put("image_url", imageUrl);
+
+        Map<String, Object> message = new HashMap<>();
+        message.put("role", "user");
+        message.put("content", java.util.Arrays.asList(textPart, imagePart));
+
+        Map<String, Object> request = new HashMap<>();
+        request.put("model", VISION_MODEL);
+        request.put("messages", Collections.singletonList(message));
+        request.put("temperature", 0.2);
+
+        HttpEntity<Map<String, Object>> entity =
+                new HttpEntity<>(request, headers);
+
         try {
-
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_JSON);
-            headers.setBearerAuth(apiKey);
-
-            Map<String, Object> textPart = new HashMap<>();
-            textPart.put("type", "text");
-            textPart.put("text", prompt);
-
-            Map<String, Object> imageUrl = new HashMap<>();
-            imageUrl.put("url", "data:" + mimeType + ";base64," + base64Image);
-
-            Map<String, Object> imagePart = new HashMap<>();
-            imagePart.put("type", "image_url");
-            imagePart.put("image_url", imageUrl);
-
-            Map<String, Object> message = new HashMap<>();
-            message.put("role", "user");
-            message.put("content", java.util.Arrays.asList(textPart, imagePart));
-
-            Map<String, Object> request = new HashMap<>();
-            request.put("model", VISION_MODEL);
-            request.put("messages", Collections.singletonList(message));
-            request.put("temperature", 0.2);
-
-            HttpEntity<Map<String, Object>> entity =
-                    new HttpEntity<>(request, headers);
 
             ResponseEntity<String> response =
                     restTemplate.postForEntity(URL, entity, String.class);
@@ -108,8 +122,11 @@ public class GeminiService {
             return extractContent(response.getBody());
 
         } catch (Exception e) {
+
+            System.out.println("Groq Vision API Error: " + e.getMessage());
+
             throw new RuntimeException(
-                    "Failed to call Groq API (vision): " + e.getMessage(), e);
+                    "Failed to call Groq Vision API: " + e.getMessage(), e);
         }
     }
 
@@ -119,29 +136,20 @@ public class GeminiService {
 
             JsonNode root = objectMapper.readTree(response);
 
-            String text = root.path("choices")
-                    .get(0)
-                    .path("message")
-                    .path("content")
-                    .asText();
+            if (root.has("choices")) {
 
-            return extractJson(text);
+                return root.path("choices")
+                        .get(0)
+                        .path("message")
+                        .path("content")
+                        .asText();
+            }
+
+            return response;
 
         } catch (Exception e) {
-            throw new RuntimeException(
-                    "Unable to parse Groq response", e);
+
+            throw new RuntimeException("Unable to parse Groq response", e);
         }
-    }
-
-    private String extractJson(String text) {
-
-        int start = text.indexOf("{");
-        int end = text.lastIndexOf("}");
-
-        if (start != -1 && end != -1) {
-            return text.substring(start, end + 1);
-        }
-
-        return text;
     }
 }
