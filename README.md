@@ -105,13 +105,3 @@ Add screenshots of:
 - Fertilizer Recommendation
 - Market Price Prediction
 
-## 👩‍💻 Developed By
-
-**Akalya Murugesan**
-
-- Final Year B.E. Computer Science and Engineering
-- VSB Engineering College
-
-## 📄 License
-
-This project is developed for educational and learning purposes.
