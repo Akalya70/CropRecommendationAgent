@@ -26,7 +26,6 @@ An AI-powered web application that helps farmers identify the most suitable crop
 
 ### Database
 - MySQL
-
 ### AI Integration
 - Google Gemini API
 
