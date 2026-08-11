@@ -91,7 +91,6 @@ Add screenshots of:
 - Home Page
 - Login Page
 - User Dashboard
-- Crop Recommendation Page
 
 
 
