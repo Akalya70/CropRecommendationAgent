@@ -93,7 +93,7 @@ Add screenshots of:
 - User Dashboard
 - Crop Recommendation Page
 - Admin Dashboard
-- Leaf Analysis Page
+
 
 ## 🎯 Future Enhancements
 
