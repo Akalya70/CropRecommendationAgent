@@ -84,16 +84,6 @@ mvn spring-boot:run
 http://localhost:8080
 ```
 
-## 📸 Screenshots
-
-Add screenshots of:
-
-- Home Page
-- Login Page
-- User Dashboard
-
-
-
 ## 🎯 Future Enhancements
 
 - Weather API Integration
