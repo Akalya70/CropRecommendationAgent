@@ -92,7 +92,7 @@ Add screenshots of:
 - Login Page
 - User Dashboard
 - Crop Recommendation Page
-- Admin Dashboard
+
 
 
 ## 🎯 Future Enhancements
