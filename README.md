@@ -88,8 +88,6 @@ The main objectives of this project are:
 | API             | REST API        |
 | Database        | MySQL           |
 | Persistence     | Spring Data JPA |
-| Build Tool      | Maven           |
-| API Testing     | Postman         |
 | Version Control | Git             |
 | Repository      | GitHub          |
 
@@ -149,11 +147,9 @@ JSON Response
 Install:
 
 * Java 21 or compatible Java version
-* Maven
 * MySQL
 * Git
-* Postman (optional)
-
+* 
 ### Clone Repository
 
 ```bash
@@ -174,7 +170,6 @@ Create a MySQL database and configure the connection in:
 src/main/resources/application.properties
 ```
 
-Do not commit database passwords or API keys to GitHub.
 
 ### Build
 
@@ -192,11 +187,6 @@ The application will start on the configured Spring Boot port.
 
 ---
 
-## 🧪 API Testing
-
-The REST APIs can be tested using **Postman**.
-
-Typical API workflow:
 
 ```text
 Client
@@ -245,11 +235,6 @@ JSON Response
 
 ---
 
-## 👩‍💻 Developer
-
-**Akalya Murugesan**
-
-Computer Science & Engineering
 
 ---
 
