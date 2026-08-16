@@ -149,7 +149,7 @@ Install:
 * Java 21 or compatible Java version
 * MySQL
 * Git
-* 
+  
 ### Clone Repository
 
 ```bash
@@ -232,8 +232,6 @@ JSON Response
 ## 🔗 Repository
 
 [Crop Recommendation Agent — GitHub](https://github.com/Akalya70/CropRecommendationAgent?utm_source=chatgpt.com)
-
----
 
 
 ---
