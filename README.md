@@ -233,7 +233,6 @@ JSON Response
 
 [Crop Recommendation Agent — GitHub](https://github.com/Akalya70/CropRecommendationAgent?utm_source=chatgpt.com)
 
-
 ---
 
 <p align="center">
