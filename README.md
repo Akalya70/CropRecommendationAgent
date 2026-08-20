@@ -146,7 +146,7 @@ JSON Response
 
 Install:
 
-* Java 21 or compatible Java version
+* Java 21
 * MySQL
 * Git
   
