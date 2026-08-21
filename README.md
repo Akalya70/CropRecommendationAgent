@@ -95,6 +95,7 @@ The main objectives of this project are:
 
 ## 📂 Project Structure
 
+
 ```text
 CropRecommendationAgent/
 │
