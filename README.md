@@ -24,6 +24,7 @@ The application is designed around the idea of using structured agricultural inf
 
 ## 🎯 Objectives
 
+
 The main objectives of this project are:
 
 
