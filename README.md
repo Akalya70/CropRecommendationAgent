@@ -26,6 +26,7 @@ The application is designed around the idea of using structured agricultural inf
 
 The main objectives of this project are:
 
+
 * 🌱 Provide crop recommendations based on input parameters.
 * 📊 Process agricultural data through a backend application.
 * 🔗 Expose functionality through REST APIs.
