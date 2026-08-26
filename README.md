@@ -20,6 +20,7 @@ The project demonstrates the development of a RESTful backend using **Java and S
 
 The application is designed around the idea of using structured agricultural information to assist users in selecting suitable crops.
 
+
 ---
 
 ## 🎯 Objectives
