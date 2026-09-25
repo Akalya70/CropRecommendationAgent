@@ -246,3 +246,6 @@ JSON Response
 <p align="center">
   <strong>🌱 Technology for Smarter Agriculture 🌱</strong>
 </p>
+## Live Demo
+
+[Crop Recommendation Agent](https://croprecommendationagent.onrender.com/)
