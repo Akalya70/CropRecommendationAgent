@@ -48,7 +48,6 @@ private static final String VISION_MODEL =
             System.out.println("ERROR : GROQ_API_KEY NOT FOUND");
         } else {
             System.out.println("Groq API Loaded Successfully");
-            System.out.println("API KEY = " + apiKey);
         }
 
         System.out.println("================================");
