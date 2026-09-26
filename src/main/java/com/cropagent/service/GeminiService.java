@@ -32,8 +32,8 @@ public class GeminiService {
 private static final String TEXT_MODEL =
         "openai/gpt-oss-120b";
 
-    private static final String VISION_MODEL =
-            "meta-llama/llama-4-scout-17b-16e-instruct";
+private static final String VISION_MODEL =
+        "qwen/qwen3.8-27b";
 
     public GeminiService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
