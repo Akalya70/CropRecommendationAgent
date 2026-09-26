@@ -27,14 +27,14 @@ public class GeminiService {
     private final RestTemplate restTemplate;
     private final ObjectMapper mapper = new ObjectMapper();
 
+
     private static final String API_URL =
             "https://api.groq.com/openai/v1/chat/completions";
-private static final String TEXT_MODEL =
+     private static final String TEXT_MODEL =
         "openai/gpt-oss-120b";
 
 private static final String VISION_MODEL =
         "qwen/qwen3.8-27b";
-
     public GeminiService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
