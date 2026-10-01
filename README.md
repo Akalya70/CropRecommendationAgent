@@ -40,6 +40,7 @@ The main objectives of this project are:
 
 ---
 
+
 ## ✨ Features
 
 * 🌾 Crop recommendation
