@@ -5,6 +5,7 @@
   <img src="https://capsule-render.vercel.app/api?type=waving&color=0:16A085,100:2ECC71&height=200&section=header&text=Crop%20Recommendation%20Agent&fontSize=40&fontColor=ffffff&animation=fadeIn&fontAlignY=35" width="100%"/>
 </p>
 
+
 <p align="center">
   <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white"/>
   <img src="https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white"/>
