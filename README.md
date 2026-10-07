@@ -10,7 +10,6 @@
   <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white"/>
   <img src="https://img.shields.io/badge/REST%20API-02569B?style=for-the-badge"/>
 </p>
-
 ## 📌 Overview
 **Crop Recommendation Agent** is a backend-oriented application designed to provide crop recommendations based on agricultural input parameters.
 
