@@ -77,7 +77,6 @@ The main objectives of this project are:
 ---
 
 ## 🧰 Technology Stack
-
 | Category        | Technology      |
 | --------------- | --------------- |
 | Language        | Java            |
