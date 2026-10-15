@@ -45,7 +45,6 @@ The main objectives of this project are:
 
 ---
 ## 🏗️ Architecture
-
 ```text
                 👤 User / Client
                        │
