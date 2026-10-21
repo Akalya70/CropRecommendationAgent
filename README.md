@@ -41,7 +41,6 @@ The main objectives of this project are:
 * 🧩 Layered application architecture
 * 🔄 CRUD/database operations where applicable
 * 🚀 Deployment-ready backend structure
-
 ---
 ## 🏗️ Architecture
 ```text
