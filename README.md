@@ -85,7 +85,6 @@ The main objectives of this project are:
 | Repository      | GitHub          |
 
 ---
-
 ## 📂 Project Structure
 
 ```text
