@@ -105,7 +105,6 @@ CropRecommendationAgent/
 ```
 
 ---
-
 ## 🔄 Application Flow
 
 ```text
