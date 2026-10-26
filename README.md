@@ -168,7 +168,6 @@ src/main/resources/application.properties
 ```bash
 mvn clean install
 ```
-
 ### Run
 
 ```bash
