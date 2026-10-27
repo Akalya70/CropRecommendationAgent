@@ -173,7 +173,6 @@ mvn clean install
 ```bash
 mvn spring-boot:run
 ```
-
 The application will start on the configured Spring Boot port.
 
 ---
